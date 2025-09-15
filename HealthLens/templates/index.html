@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthLens - AI-Powered Wellness Companion</title>
+    <meta name="description" content="HealthLens - Your AI-powered wellness companion. Predict health risks, get personalized wellness guidance, and stay safe with explainable AI.">
+    <meta name="keywords" content="health, wellness, AI, chronic disease, diabetes, hypertension, heart disease, healthcare">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://healthlens.ai/">
+    <meta property="og:title" content="HealthLens - AI-Powered Wellness Companion">
+    <meta property="og:description" content="Predict health risks, get personalized wellness guidance, and stay safe with explainable AI.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://healthlens.ai/">
+    <meta property="twitter:title" content="HealthLens - AI-Powered Wellness Companion">
+    <meta property="twitter:description" content="Predict health risks, get personalized wellness guidance, and stay safe with explainable AI.">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('landing')">
+                <i class="fas fa-heartbeat"></i>
+                HealthLens
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about" onclick="showPage('about')">About</a></li>
+                <li><a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.5rem; margin-left: 1rem;">Sign In</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Landing Page Content -->
+    <div id="landing" class="page active">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Your AI-Powered Wellness Companion</h1>
+                    <p>Predict health risks. Get personalized wellness guidance. Stay safe with explainable AI technology designed for chronic disease management.</p>
+                    <a href="assessment.html" class="cta-button">
+                        <i class="fas fa-rocket"></i>
+                        Start Your Health Journey
+                    </a>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>HIPAA Compliant</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-user-md"></i>
+                            <span>Doctor Approved</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>FDA Recognized</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="features-section">
+                <div class="section-header">
+                    <h2>Comprehensive Health Management</h2>
+                    <p>Advanced AI algorithms combined with medical expertise to give you personalized health insights you can trust.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Risk Prediction</h3>
+                        <p>Advanced AI algorithms analyze your health data to predict risks for diabetes, hypertension, and heart disease with clinically validated accuracy.</p>
+                        <ul class="feature-list">
+                            <li>Diabetes risk assessment</li>
+                            <li>Hypertension monitoring</li>
+                            <li>Cardiovascular health analysis</li>
+                            <li>Early warning system</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Personalized Guidance</h3>
+                        <p>Get tailored diet, exercise, and lifestyle recommendations based on your unique health profile and medical history.</p>
+                        <ul class="feature-list">
+                            <li>Custom meal planning</li>
+                            <li>Exercise routines</li>
+                            <li>Lifestyle modifications</li>
+                            <li>Progress tracking</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Smart Reminders</h3>
+                        <p>Never miss a medication dose or health check with intelligent reminders and comprehensive tracking tools.</p>
+                        <ul class="feature-list">
+                            <li>Medication reminders</li>
+                            <li>Appointment scheduling</li>
+                            <li>Vitals tracking</li>
+                            <li>Progress reports</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Explainable AI</h3>
+                        <p>Understand exactly how our AI makes predictions with clear, transparent explanations you can trust and share with your doctor.</p>
+                        <ul class="feature-list">
+                            <li>SHAP analysis</li>
+                            <li>LIME explanations</li>
+                            <li>Visual insights</li>
+                            <li>Medical language translation</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Device Integration</h3>
+                        <p>Seamlessly connect with your favorite health devices and apps for comprehensive health monitoring.</p>
+                        <ul class="feature-list">
+                            <li>Fitness trackers</li>
+                            <li>Smart scales</li>
+                            <li>Blood pressure monitors</li>
+                            <li>Glucose meters</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Gamification</h3>
+                        <p>Stay motivated with achievement badges, streak counters, and social challenges that make healthy living fun.</p>
+                        <ul class="feature-list">
+                            <li>Achievement badges</li>
+                            <li>Streak tracking</li>
+                            <li>Social challenges</li>
+                            <li>Progress celebrations</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section id="how-it-works" class="how-it-works">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>How HealthLens Works</h2>
+                        <p>Simple steps to start your personalized health journey</p>
+                    </div>
+
+                    <div class="how-it-works-steps">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h3>Complete Assessment</h3>
+                            <p>Fill out our comprehensive health questionnaire covering your medical history, lifestyle, and current health status.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h3>AI Analysis</h3>
+                            <p>Our advanced AI algorithms analyze your data using clinically validated models to assess your health risks and opportunities.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h3>Get Recommendations</h3>
+                            <p>Receive personalized recommendations for diet, exercise, lifestyle changes, and medication management tailored to your needs.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h3>Track Progress</h3>
+                            <p>Monitor your health journey with interactive dashboards, progress tracking, and regular AI-powered insights.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section class="stats-section">
+                <div class="section-header">
+                    <h2>Trusted by Thousands</h2>
+                    <p>Join the growing community of people taking control of their health</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-value" id="users-count">25,000+</div>
+                        <div class="stat-label">Active Users</div>
+                        <div class="stat-description">Growing daily</div>
+                    </div>
+                    <div class="stat-card teal">
+                        <div class="stat-value" id="accuracy-rate">95%</div>
+                        <div class="stat-label">Accuracy Rate</div>
+                        <div class="stat-description">Clinically validated</div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-value" id="predictions-count">150,000+</div>
+                        <div class="stat-label">Health Predictions</div>
+                        <div class="stat-description">And counting</div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-value" id="rating">4.9</div>
+                        <div class="stat-label">Average Rating</div>
+                        <div class="stat-description">Out of 5 stars</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>What Our Users Say</h2>
+                        <p>Real stories from people who've transformed their health</p>
+                    </div>
+
+                    <div class="testimonials-wrapper">
+                        <div class="testimonial-slide active">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "HealthLens helped me understand my diabetes risk early. The personalized meal plans and exercise routines have been life-changing. My A1C has improved significantly!"
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="user-avatar primary">M</div>
+                                <div class="author-info">
+                                    <div class="author-name">Maria Rodriguez</div>
+                                    <div class="author-condition">Diabetes Management</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "As a busy professional, HealthLens keeps me on track with my blood pressure medication and lifestyle goals. The AI explanations give me confidence in my health decisions."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="user-avatar teal">J</div>
+                                <div class="author-info">
+                                    <div class="author-name">James Chen</div>
+                                    <div class="author-condition">Hypertension Management</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "The gamification features keep me motivated! I've maintained my exercise streak for 45 days now. My family doctor is amazed at my progress."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="user-avatar success">S</div>
+                                <div class="author-info">
+                                    <div class="author-name">Sarah Johnson</div>
+                                    <div class="author-condition">Fitness & Wellness</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "HealthLens caught my pre-diabetes risk 2 years before my annual checkup would have. The early intervention saved me from developing full diabetes."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="user-avatar danger">R</div>
+                                <div class="author-info">
+                                    <div class="author-name">Robert Kim</div>
+                                    <div class="author-condition">Pre-diabetes Prevention</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                "The medication reminders and tracking features have improved my adherence by 100%. I finally feel in control of my health management."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="user-avatar accent">L</div>
+                                <div class="author-info">
+                                    <div class="author-name">Linda Martinez</div>
+                                    <div class="author-condition">Medication Management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-nav">
+                        <button class="nav-btn" onclick="prevTestimonial()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="nav-btn" onclick="nextTestimonial()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="container">
+                    <h2>Ready to Transform Your Health?</h2>
+                    <p>Join thousands of users who are already living healthier lives with HealthLens.</p>
+                    <div class="cta-buttons">
+                        <a href="assessment.html" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Start Free Assessment
+                        </a>
+                        <a href="login.html" class="btn btn-outline">
+                            <i class="fas fa-user"></i> Sign Up Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h2>About HealthLens</h2>
+                <p>Transforming healthcare through AI innovation</p>
+            </div>
+
+            <div class="content-card">
+                <h3 class="section-title primary">Our Mission</h3>
+                <p class="content-text">
+                    At HealthLens, we believe everyone deserves access to personalized, intelligent healthcare guidance. Our mission is to democratize health insights through cutting-edge AI technology, making preventive care accessible and actionable for people everywhere.
+                </p>
+                
+                <h3 class="section-title teal">Our Technology</h3>
+                <p class="content-text">
+                    Our proprietary AI algorithms are trained on millions of anonymized health records and validated by leading medical institutions. We use explainable AI techniques to ensure transparency and build trust with our users and healthcare providers.
+                </p>
+
+                <h3 class="section-title success">Our Team</h3>
+                <p class="content-text">
+                    Founded by a team of medical professionals, AI researchers, and healthcare advocates, HealthLens combines deep medical expertise with advanced technology to deliver results that matter to real people's lives.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>HealthLens</h4>
+                    <p>Your trusted AI-powered wellness companion for chronic disease management and health optimization.</p>
+                    <div class="social-links">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#">Risk Assessment</a></li>
+                        <li><a href="#">Personalized Guidance</a></li>
+                        <li><a href="#">Smart Reminders</a></li>
+                        <li><a href="#">Progress Tracking</a></li>
+                        <li><a href="#">Device Integration</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Research</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 HealthLens. All rights reserved. | HIPAA Compliant | FDA Recognized</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/app.js"></script>
+</body>
+</html>

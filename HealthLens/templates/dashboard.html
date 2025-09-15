@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HealthLens</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- <link rel="stylesheet" href="static/css/styles.css"> -->
+         <link rel="stylesheet" href="../static/css/styles.css">
+
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i>
+                HealthLens
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('dashboard')" class="active">Dashboard</a></li>
+                <li><a href="assessment.html">Assessment</a></li>
+                <li><a href="#" onclick="showPage('reports')">Reports</a></li>
+                <li><a href="#" onclick="showPage('settings')">Settings</a></li>
+                <li class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">U</div>
+                    <div class="user-dropdown" id="userDropdown" style="display: none;">
+                        <a href="#" onclick="showPage('profile')"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" onclick="handleSignOut()"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div id="dashboard" class="page active">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="container">
+                    <h1 class="welcome-message">Welcome back, John Doe!</h1>
+                    <p class="dashboard-subtitle">Here's your health overview for today</p>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-value" id="risk-score">23</div>
+                    <div class="stat-label">Overall Risk Score</div>
+                    <div class="stat-description">Lower is better</div>
+                </div>
+                <div class="stat-card teal">
+                    <div class="stat-value" id="health-score">87</div>
+                    <div class="stat-label">Health Score</div>
+                    <div class="stat-description">Out of 100</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-value" id="streak-days">12</div>
+                    <div class="stat-label">Day Streak</div>
+                    <div class="stat-description">Keep it up!</div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-value" id="completed-goals">7/10</div>
+                    <div class="stat-label">Goals Completed</div>
+                    <div class="stat-description">This week</div>
+                </div>
+            </div>
+
+            <!-- Risk Assessment Section -->
+            <h2 class="section-title">
+                <i class="fas fa-chart-pie"></i> Risk Assessment
+            </h2>
+            <div class="risk-container">
+                <div class="risk-card">
+                    <div class="risk-header">
+                        <h3>Health Risk Overview</h3>
+                        <canvas id="riskChart"></canvas>
+                        
+                        <div class="risk-details">
+                            <div class="risk-item">
+                                <span>Diabetes Risk</span>
+                                <span class="risk-level risk-moderate">Moderate (65%)</span>
+                            </div>
+                            <div class="risk-item">
+                                <span>Hypertension Risk</span>
+                                <span class="risk-level risk-moderate">Moderate (45%)</span>
+                            </div>
+                            <div class="risk-item">
+                                <span>Heart Disease Risk</span>
+                                <span class="risk-level risk-low">Low (30%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="risk-card">
+                    <div class="risk-header">
+                        <h3><i class="fas fa-brain"></i> AI Explanation</h3>
+                        <p class="ai-explanation">
+                            Your diabetes risk is <strong>moderate</strong> based on our AI analysis. Here are the key contributing factors:
+                        </p>
+                        
+                        <div class="factor-breakdown">
+                            <div class="factor-item">
+                                <div class="factor-bar" style="width: 120px; background: #FFEE58;"></div>
+                                <span>Elevated glucose levels (60%)</span>
+                            </div>
+                            <div class="factor-item">
+                                <div class="factor-bar" style="width: 60px; background: #FF7043;"></div>
+                                <span>Low activity levels (30%)</span>
+                            </div>
+                            <div class="factor-item">
+                                <div class="factor-bar" style="width: 20px; background: #BDBDBD;"></div>
+                                <span>Family history (10%)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="recommendations-box">
+                            <h4>
+                                <i class="fas fa-lightbulb"></i> Key Recommendations
+                            </h4>
+                            <ul>
+                                <li>Increase daily physical activity by 30 minutes</li>
+                                <li>Monitor blood glucose levels twice weekly</li>
+                                <li>Reduce refined sugar intake by 50%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personalized Recommendations Section -->
+            <h2 class="section-title">
+                <i class="fas fa-user-md"></i> Personalized Recommendations
+            </h2>
+            <div class="recommendations-grid">
+                <div class="recommendation-category">
+                    <div class="category-header diet-header">
+                        <i class="fas fa-utensils"></i> Diet & Nutrition
+                    </div>
+                    <div class="recommendation-list">
+                        <div class="recommendation-item">
+                            <i class="fas fa-check-circle recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Reduce salt intake to under 2300mg daily</div>
+                                <div class="rec-current">Current: ~3200mg/day</div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-leaf recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Eat 5 servings of leafy greens weekly</div>
+                                <div class="rec-current">Current: 2 servings/week</div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-ban recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Cut sugary drinks to max 1 per week</div>
+                                <div class="rec-current">Current: 4-5 per week</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-category">
+                    <div class="category-header exercise-header">
+                        <i class="fas fa-dumbbell"></i> Exercise & Activity
+                    </div>
+                    <div class="recommendation-list">
+                        <div class="recommendation-item">
+                            <i class="fas fa-walking recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Walk 8,000 steps daily (currently 5,200)</div>
+                                <div class="rec-current">Start with 15-min walks after meals</div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-heart recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Try 20 minutes of yoga 3x per week</div>
+                                <div class="rec-current">Helps with stress and flexibility</div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-chart-line recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Track weekly cardio progress</div>
+                                <div class="rec-current">Goal: 150 min moderate activity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-category">
+                    <div class="category-header lifestyle-header">
+                        <i class="fas fa-moon"></i> Lifestyle & Wellness
+                    </div>
+                    <div class="recommendation-list">
+                        <div class="recommendation-item">
+                            <i class="fas fa-bed recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Sleep 7-8 hours nightly</div>
+                                <div class="rec-current">Current average: 6.2 hours</div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-spa recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Practice meditation 10 minutes daily</div>
+                                <div class="rec-current">Try guided apps like Headspace</div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-mobile-alt recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Reduce screen time 1 hour before bed</div>
+                                <div class="rec-current">Improves sleep quality</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-category">
+                    <div class="category-header medication-header">
+                        <i class="fas fa-pills"></i> Medication & Monitoring
+                    </div>
+                    <div class="recommendation-list">
+                        <div class="recommendation-item">
+                            <i class="fas fa-clock recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Take blood pressure medication at 8PM</div>
+                                <div class="rec-current">Set daily reminder</div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-clipboard-list recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Log glucose readings twice weekly</div>
+                                <div class="rec-current">Tuesday & Saturday mornings</div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-calendar-check recommendation-icon"></i>
+                            <div>
+                                <div class="rec-title">Schedule 3-month checkup with Dr. Smith</div>
+                                <div class="rec-current">Last visit: 2 months ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tracking Section -->
+            <h2 class="section-title">
+                <i class="fas fa-chart-line"></i> Progress Tracking
+            </h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4><i class="fas fa-tint"></i> Glucose Levels</h4>
+                    <canvas id="glucoseChart"></canvas>
+                    <div class="metric-info">
+                        Latest: 125 mg/dL (Target: <120 mg/dL)
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <h4><i class="fas fa-heartbeat"></i> Blood Pressure</h4>
+                    <canvas id="bpChart"></canvas>
+                    <div class="metric-info">
+                        Latest: 129/84 mmHg (Target: <120/80 mmHg)
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <h4><i class="fas fa-weight"></i> Weight Progress</h4>
+                    <canvas id="weightChart"></canvas>
+                    <div class="metric-info">
+                        Latest: 73.9 kg (Goal: 72 kg)
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <h4><i class="fas fa-running"></i> Activity Level</h4>
+                    <canvas id="activityChart"></canvas>
+                    <div class="metric-info">
+                        Weekly avg: 5,200 steps/day (Goal: 8,000)
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Gamification Section -->
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i> Your Achievements
+            </h2>
+            <div class="gamification-container">
+                <div class="streaks-container">
+                    <h4><i class="fas fa-fire"></i> Current Streaks</h4>
+                    <div class="streak-item">
+                        <div class="streak-info">
+                            <div class="streak-title">Exercise Streak</div>
+                            <div class="streak-description">Daily 30-min activity</div>
+                        </div>
+                        <div class="streak-count">5 days</div>
+                    </div>
+                    <div class="streak-item">
+                        <div class="streak-info">
+                            <div class="streak-title">Medication Adherence</div>
+                            <div class="streak-description">On-time doses</div>
+                        </div>
+                        <div class="streak-count">12 days</div>
+                    </div>
+                    <div class="streak-item">
+                        <div class="streak-info">
+                            <div class="streak-title">Sleep Schedule</div>
+                            <div class="streak-description">7+ hours nightly</div>
+                        </div>
+                        <div class="streak-count">3 days</div>
+                    </div>
+                    <div class="streak-item">
+                        <div class="streak-info">
+                            <div class="streak-title">Glucose Monitoring</div>
+                            <div class="streak-description">Twice weekly logging</div>
+                        </div>
+                        <div class="streak-count">8 weeks</div>
+                    </div>
+                </div>
+
+                <div class="badges-container">
+                    <h4><i class="fas fa-medal"></i> Achievement Badges</h4>
+                    <div class="badges-grid">
+                        <div class="badge earned" data-tooltip="Maintained healthy glucose levels for 3 consecutive days">
+                            <div class="badge-icon">🎯</div>
+                            <div class="badge-text">3 Days Sugar Control</div>
+                        </div>
+                        <div class="badge earned" data-tooltip="Completed 7 days of exercise activities">
+                            <div class="badge-icon">💪</div>
+                            <div class="badge-text">7 Day Workout Streak</div>
+                        </div>
+                        <div class="badge" data-tooltip="Sleep 7+ hours for 7 consecutive nights">
+                            <div class="badge-icon">😴</div>
+                            <div class="badge-text">Sleep Champion</div>
+                        </div>
+                        <div class="badge earned" data-tooltip="Took medication on time for 1 week">
+                            <div class="badge-icon">💊</div>
+                            <div class="badge-text">Med Adherence Pro</div>
+                        </div>
+                        <div class="badge" data-tooltip="Walk 10,000 steps in a single day">
+                            <div class="badge-icon">👟</div>
+                            <div class="badge-text">Step Master</div>
+                        </div>
+                        <div class="badge earned" data-tooltip="Logged health data for 30 consecutive days">
+                            <div class="badge-icon">📊</div>
+                            <div class="badge-text">Data Tracker</div>
+                        </div>
+                    </div>
+                    
+                    <div class="badge-progress">
+                        <div class="progress-text">
+                            Badge Progress: 4/15 earned
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 27%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reports Page -->
+    <div id="reports" class="page">
+        <div class="container">
+            <h2 class="page-title">Health Reports</h2>
+            
+            <div class="reports-grid">
+                <div class="metric-card">
+                    <h4>Monthly Health Summary</h4>
+                    <p class="card-description">Comprehensive overview of your health metrics for the past month.</p>
+                    <button class="btn btn-primary" onclick="generateReport('monthly')">Generate Report</button>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Risk Assessment Report</h4>
+                    <p class="card-description">Detailed analysis of your chronic disease risk factors and trends.</p>
+                    <button class="btn btn-primary" onclick="generateReport('risk')">Generate Report</button>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Progress Report</h4>
+                    <p class="card-description">Track your health improvements and goal achievements over time.</p>
+                    <button class="btn btn-primary" onclick="generateReport('progress')">Generate Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Page -->
+    <div id="settings" class="page">
+        <div class="container">
+            <h2 class="page-title">Settings</h2>
+            
+            <div class="settings-grid">
+                <div class="metric-card">
+                    <h4>Notification Preferences</h4>
+                    <div class="settings-content">
+                        <label class="setting-item">
+                            <input type="checkbox" checked> Medication reminders
+                        </label>
+                        <label class="setting-item">
+                            <input type="checkbox" checked> Health check reminders
+                        </label>
+                        <label class="setting-item">
+                            <input type="checkbox"> Weekly progress reports
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Data & Privacy</h4>
+                    <div class="settings-content">
+                        <button class="btn btn-secondary full-width">Download My Data</button>
+                        <button class="btn btn-danger full-width" onclick="confirmDeleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/app.js"></script>
+</body>
+</html>
